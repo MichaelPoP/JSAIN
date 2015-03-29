@@ -1,0 +1,199 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', '-g', 'natural' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.35
+4 verbose cache add [ 'natural', null ]
+5 verbose cache add name=undefined spec="natural" args=["natural",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'natural',
+6 verbose parsed url   path: 'natural',
+6 verbose parsed url   href: 'natural' }
+7 silly lockFile 11e60b0e-natural natural
+8 verbose lock natural /Users/Admin/.npm/11e60b0e-natural.lock
+9 silly lockFile 11e60b0e-natural natural
+10 silly lockFile 11e60b0e-natural natural
+11 verbose addNamed [ 'natural', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile 72c6aebd-natural natural@
+14 verbose lock natural@ /Users/Admin/.npm/72c6aebd-natural.lock
+15 silly addNameRange { name: 'natural', range: '*', hasData: false }
+16 verbose request where is /natural
+17 verbose request registry https://registry.npmjs.org/
+18 verbose request id 3ceb94dc4393c661
+19 verbose url raw /natural
+20 verbose url resolving [ 'https://registry.npmjs.org/', './natural' ]
+21 verbose url resolved https://registry.npmjs.org/natural
+22 verbose request where is https://registry.npmjs.org/natural
+23 info trying registry request attempt 1 at 23:31:49
+24 verbose etag "99WQWPN6N40TVNLABNMRS5SQE"
+25 http GET https://registry.npmjs.org/natural
+26 http 304 https://registry.npmjs.org/natural
+27 silly registry.get cb [ 304,
+27 silly registry.get   { date: 'Sun, 29 Mar 2015 06:31:49 GMT',
+27 silly registry.get     server: 'Apache',
+27 silly registry.get     via: '1.1 varnish',
+27 silly registry.get     'last-modified': 'Sun, 29 Mar 2015 06:31:50 GMT',
+27 silly registry.get     'cache-control': 'max-age=60',
+27 silly registry.get     etag: '"99WQWPN6N40TVNLABNMRS5SQE"',
+27 silly registry.get     age: '0',
+27 silly registry.get     'x-served-by': 'cache-lax1430-LAX',
+27 silly registry.get     'x-cache': 'MISS',
+27 silly registry.get     'x-cache-hits': '0',
+27 silly registry.get     'x-timer': 'S1427610709.845875,VS0,VE311',
+27 silly registry.get     vary: 'Accept',
+27 silly registry.get     'content-length': '0',
+27 silly registry.get     'keep-alive': 'timeout=10, max=50',
+27 silly registry.get     connection: 'Keep-Alive' } ]
+28 verbose etag https://registry.npmjs.org/natural from cache
+29 silly addNameRange number 2 { name: 'natural', range: '*', hasData: true }
+30 silly addNameRange versions [ 'natural',
+30 silly addNameRange   [ '0.0.54',
+30 silly addNameRange     '0.0.27',
+30 silly addNameRange     '0.0.55',
+30 silly addNameRange     '0.0.56',
+30 silly addNameRange     '0.0.57',
+30 silly addNameRange     '0.0.58',
+30 silly addNameRange     '0.0.60',
+30 silly addNameRange     '0.0.61',
+30 silly addNameRange     '0.0.62',
+30 silly addNameRange     '0.0.63',
+30 silly addNameRange     '0.0.64',
+30 silly addNameRange     '0.0.65',
+30 silly addNameRange     '0.0.66',
+30 silly addNameRange     '0.0.67',
+30 silly addNameRange     '0.0.68',
+30 silly addNameRange     '0.0.69',
+30 silly addNameRange     '0.1.0',
+30 silly addNameRange     '0.1.1',
+30 silly addNameRange     '0.1.2',
+30 silly addNameRange     '0.1.3',
+30 silly addNameRange     '0.1.4',
+30 silly addNameRange     '0.1.5',
+30 silly addNameRange     '0.1.6',
+30 silly addNameRange     '0.1.7',
+30 silly addNameRange     '0.1.8',
+30 silly addNameRange     '0.1.9',
+30 silly addNameRange     '0.1.10',
+30 silly addNameRange     '0.1.11',
+30 silly addNameRange     '0.1.12',
+30 silly addNameRange     '0.1.13',
+30 silly addNameRange     '0.1.14',
+30 silly addNameRange     '0.1.15',
+30 silly addNameRange     '0.1.16',
+30 silly addNameRange     '0.1.17',
+30 silly addNameRange     '0.1.18',
+30 silly addNameRange     '0.1.19',
+30 silly addNameRange     '0.1.20',
+30 silly addNameRange     '0.1.21',
+30 silly addNameRange     '0.1.22',
+30 silly addNameRange     '0.1.23',
+30 silly addNameRange     '0.1.24',
+30 silly addNameRange     '0.1.25',
+30 silly addNameRange     '0.1.26',
+30 silly addNameRange     '0.1.27',
+30 silly addNameRange     '0.1.28',
+30 silly addNameRange     '0.1.29',
+30 silly addNameRange     '0.2.0',
+30 silly addNameRange     '0.2.1' ] ]
+31 verbose addNamed [ 'natural', '0.2.1' ]
+32 verbose addNamed [ '0.2.1', '0.2.1' ]
+33 silly lockFile dfa637ed-natural-0-2-1 natural@0.2.1
+34 verbose lock natural@0.2.1 /Users/Admin/.npm/dfa637ed-natural-0-2-1.lock
+35 silly lockFile dfa637ed-natural-0-2-1 natural@0.2.1
+36 silly lockFile dfa637ed-natural-0-2-1 natural@0.2.1
+37 silly lockFile 72c6aebd-natural natural@
+38 silly lockFile 72c6aebd-natural natural@
+39 silly resolved [ { name: 'natural',
+39 silly resolved     description: 'General natural language (tokenizing, stemming (English, Russian, Spanish), classification, inflection, phonetics, tfidf, WordNet, jaro-winkler, Levenshtein distance, Dice\'s Coefficient) facilities for node.',
+39 silly resolved     version: '0.2.1',
+39 silly resolved     homepage: 'https://github.com/NaturalNode/natural',
+39 silly resolved     repository: { type: 'git', url: 'git://github.com/NaturalNode/natural.git' },
+39 silly resolved     engines: { node: '>=0.4.10' },
+39 silly resolved     dependencies:
+39 silly resolved      { sylvester: '>= 0.0.12',
+39 silly resolved        apparatus: '>= 0.0.9',
+39 silly resolved        underscore: '>=1.3.1' },
+39 silly resolved     devDependencies: { uubench: '0.0.x', 'jasmine-node': '~1.13.1' },
+39 silly resolved     scripts: { test: 'NODE_PATH=. node_modules/jasmine-node/bin/jasmine-node spec/' },
+39 silly resolved     author: { name: 'Chris Umbel', email: 'chris@chrisumbel.com' },
+39 silly resolved     keywords:
+39 silly resolved      [ 'natural',
+39 silly resolved        'language',
+39 silly resolved        'porter',
+39 silly resolved        'lancaster',
+39 silly resolved        'stemmer',
+39 silly resolved        'bayes',
+39 silly resolved        'classifier',
+39 silly resolved        'phonetic',
+39 silly resolved        'metaphone',
+39 silly resolved        'inflector',
+39 silly resolved        'wordnet',
+39 silly resolved        'tf-idf',
+39 silly resolved        'logistic',
+39 silly resolved        'regression',
+39 silly resolved        'doublemetaphone',
+39 silly resolved        'double',
+39 silly resolved        'jaro-winkler',
+39 silly resolved        'levenshtein',
+39 silly resolved        'distance' ],
+39 silly resolved     main: './lib/natural/index.js',
+39 silly resolved     maintainers: [ [Object], [Object] ],
+39 silly resolved     gitHead: 'df64740fbfec66473367e569f2fde7f01772722a',
+39 silly resolved     bugs: { url: 'https://github.com/NaturalNode/natural/issues' },
+39 silly resolved     _id: 'natural@0.2.1',
+39 silly resolved     _shasum: '1eb5156a9d90b4591949e20e94ebc77bb2339eda',
+39 silly resolved     _from: 'natural@',
+39 silly resolved     _npmVersion: '1.4.14',
+39 silly resolved     _npmUser: { name: 'kkoch986', email: 'kkoch986@gmail.com' },
+39 silly resolved     dist:
+39 silly resolved      { shasum: '1eb5156a9d90b4591949e20e94ebc77bb2339eda',
+39 silly resolved        tarball: 'http://registry.npmjs.org/natural/-/natural-0.2.1.tgz' },
+39 silly resolved     directories: {},
+39 silly resolved     _resolved: 'https://registry.npmjs.org/natural/-/natural-0.2.1.tgz',
+39 silly resolved     readme: 'ERROR: No README data found!' } ]
+40 info install natural@0.2.1 into /usr/local/lib
+41 info installOne natural@0.2.1
+42 verbose lib/node_modules/natural unbuild
+43 verbose tar unpack /Users/Admin/.npm/natural/0.2.1/package.tgz
+44 silly lockFile bd4a9b9f-r-local-lib-node-modules-natural tar:///usr/local/lib/node_modules/natural
+45 verbose lock tar:///usr/local/lib/node_modules/natural /Users/Admin/.npm/bd4a9b9f-r-local-lib-node-modules-natural.lock
+46 silly lockFile 5692c2d8-in-npm-natural-0-2-1-package-tgz tar:///Users/Admin/.npm/natural/0.2.1/package.tgz
+47 verbose lock tar:///Users/Admin/.npm/natural/0.2.1/package.tgz /Users/Admin/.npm/5692c2d8-in-npm-natural-0-2-1-package-tgz.lock
+48 silly gunzTarPerm modes [ '755', '644' ]
+49 error Error: EACCES, mkdir '/usr/local/lib/node_modules/natural'
+49 error  { [Error: EACCES, mkdir '/usr/local/lib/node_modules/natural']
+49 error   errno: 3,
+49 error   code: 'EACCES',
+49 error   path: '/usr/local/lib/node_modules/natural',
+49 error   fstream_type: 'Directory',
+49 error   fstream_path: '/usr/local/lib/node_modules/natural',
+49 error   fstream_class: 'DirWriter',
+49 error   fstream_stack:
+49 error    [ '/usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23',
+49 error      '/usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53',
+49 error      'Object.oncomplete (fs.js:108:15)' ] }
+50 error Please try running this command again as root/Administrator.
+51 error System Darwin 14.1.0
+52 error command "node" "/usr/local/bin/npm" "install" "-g" "natural"
+53 error cwd /Users/Admin/Desktop/JSAIN
+54 error node -v v0.10.35
+55 error npm -v 1.4.28
+56 error path /usr/local/lib/node_modules/natural
+57 error fstream_path /usr/local/lib/node_modules/natural
+58 error fstream_type Directory
+59 error fstream_class DirWriter
+60 error code EACCES
+61 error errno 3
+62 error stack Error: EACCES, mkdir '/usr/local/lib/node_modules/natural'
+63 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23
+63 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53
+63 error fstream_stack Object.oncomplete (fs.js:108:15)
+64 verbose exit [ 3, true ]

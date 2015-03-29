@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>JSAIN</title>
+    <link href='http://fonts.googleapis.com/css?family=Geostar+Fill' rel='stylesheet' type='text/css'>
 
   <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -25,21 +26,49 @@
 
 </head>
 <body class="container-fluid">
+<center>
 
-<h1>J.S.A.I.N</h1>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">How to use JSAIN</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<h1 id="title">J.S.A.I.N</h1>
 <h2>Say Hello</h2>
 <br>
-<div id="replyBox" class="overflow">
+<div id="replyBox" class="overflow well well-lg">
   <ul id="reply"></ul>
 </div>
+
 <form id="commForm" action="">
   <input id="command" autocomplete="on" type="text">
-  <input type="submit">
+  <input size="100" id="inputSpace" type="submit" class="btn btn-success btn-lg">
 </form>
 
-<script>  
+<!-- Button trigger modal -->
+<button id="helpButton" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  HOW TO USE
+</button>
 
-</script>
+
+</center>
+
 
 <script type="text/javascript" src="/javascript/main.js"></script>  
 </body>

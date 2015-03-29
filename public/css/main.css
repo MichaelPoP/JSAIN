@@ -1,7 +1,19 @@
+body { background-color: #5E84AE;}
+#title {font-family: 'Geostar Fill', cursive;}
+
+
+
+
+
+
 #reply {list-style-type: none; margin:0; padding: 0;}
 #reply li { padding:5px 10px; }
 #reply li:nth-child(odd) {background: #5F5F5F}
-#replyBox {height:200px;width:200px;color:black;}
+#replyBox {height:350px;width:800px;color:black;}
 li {color:black;}
 .overflow { height: 200px; overflow-y: scroll; overflow-x: hidden;}
-body { background-color: #5E84AE;}
+#inputSpace {width:100px; height: 50px;}
+
+
+#helpButton {margin-top: 20px;}
+

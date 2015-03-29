@@ -1,12 +1,14 @@
 // var natural = require('natural');
 // tokenizer = new natural.WordTokenizer();
-var natural = require('natural'), 
-stemmer = natural.PorterStemmer;
-var natural = require('natural'),
-tokenizer = new natural.WordTokenizer();
-  stemmer.attach();
+// var natural = require('natural'), 
+// stemmer = natural.PorterStemmer;
+
 
 // var natural = require('natural'),
+// tokenizer = new natural.WordTokenizer();
+  // stemmer.attach();
+
+var stemmer = require('natural').PorterStemmer;
 // stemmer = natural.PorterStemmer;
 var _ = require('underscore');
 var express = require("express");
