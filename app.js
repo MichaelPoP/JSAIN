@@ -1,5 +1,8 @@
-// var natural = require('natural');
-// tokenizer = new natural.WordTokenizer();
+var natural = require('natural');
+tokenizer = new natural.WordTokenizer();
+var nounInflector = new natural.NounInflector();
+
+console.log(tokenizer.tokenize("your dog has fleas."));
 // var natural = require('natural'), 
 // stemmer = natural.PorterStemmer;
 
@@ -8,7 +11,7 @@
 // tokenizer = new natural.WordTokenizer();
   // stemmer.attach();
 
-var stemmer = require('natural').PorterStemmer;
+// var stemmer = require('natural').PorterStemmer;
 // stemmer = natural.PorterStemmer;
 var _ = require('underscore');
 var express = require("express");
@@ -21,19 +24,35 @@ app.use(express.static(__dirname + '/public'));
 
 
 app.get("/", function(req, res){
-  var natural = require("natural");
-  var stemmer = natural.PorterStemmer;
-  var tokenizer = new natural.WordTokenizer();
-  res.render("index", {
-    natural: natural,
-    stemmer: stemmer,
-    tokenizer: tokenizer
-  });
-  // res.redirect("/");
-  // res.json();
-  // res.status(500);
+  
+  res.render("index");
+    
 });
 
-app.listen(3000, function(){
+
+//SETS THE PORT 
+app.listen(1337, function(){
   console.log("Server Starting");
 });
+
+
+
+
+
+
+
+
+
+// app.get("/", function(req, res){
+//   var natural = require("natural");
+//   var stemmer = natural.PorterStemmer;
+//   var tokenizer = new natural.WordTokenizer();
+//   res.render("index", {
+//     natural: natural,
+//     stemmer: stemmer,
+//     tokenizer: tokenizer
+//   });
+//   // res.redirect("/");
+//   // res.json();
+//   // res.status(500);
+// });

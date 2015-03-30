@@ -16,8 +16,8 @@ $("#commForm").submit(function(e){
   // console.log(stemmer.stem("words"));
    //THIS IS WHAT I WOULD LIKE TO USE!!!
    //=================================
-   // var INPUTtoken = tokenizer.tokenize(INPUT);
-   // console.log(INPUTtoken);
+   var INPUTtoken = tokenizer.tokenize(INPUT);
+   console.log(INPUTtoken);
    //=================================
 // for(var x=0;x<INPUT.length;x++){
 //   console.log(INPUT[x]);
@@ -97,6 +97,8 @@ function goodbye() {
 function insult() {
     $("#reply").append($('<li>').text('you are' + ' ' + $matchedWord));
   }
+
+  
 function searchOmdb(input) {
   $.getJSON("http://www.omdbapi.com/", {s:input}, function (data) {
         // var $results = $("#results").empty();
