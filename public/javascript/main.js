@@ -26,6 +26,9 @@ var INPUT;
 $("#commForm").submit(function(e){
 
   e.preventDefault();
+console.log($("#command").val().split(" ").slice(1).join("+"));
+$questionFormat = $("#command").val().split(" ").slice(1).join("+");
+
 //THIS GETS THE CONVERTED INPUT FROM THE SERVER SIDE
 //=================================================================
   var origINPUT = { search: $("#command").val() };
@@ -57,14 +60,15 @@ $("#commForm").submit(function(e){
             $matchedWord = arrayList[i][j];
 
             if(i === 0) {
+              console.log(i);
                 console.log("keyword array");
-                console.log(arrayList[i][j], arrayList[i][2]);
-                console.log(INPUT[i+1], INPUT[i+2], INPUT[i+3], INPUT[i+4]);
-                $searchWord1 = INPUT[i+1];
-                $searchWord2 = INPUT[i+2];
-                $searchWord3 = INPUT[i+3];
-                $searchWord4 = INPUT[i+4];
-              KEYWORD();
+                // console.log(arrayList[i][j], arrayList[i][2]);
+                // console.log(INPUT[i+1], INPUT[i+2], INPUT[i+3], INPUT[i+4]);
+                // $searchWord1 = INPUT[i+1];
+                // $searchWord2 = INPUT[i+2];
+                // $searchWord3 = INPUT[i+3];
+                // $searchWord4 = INPUT[i+4];
+              return KEYWORD();
             } else if (i === 1){
               console.log("symbol array");
               symbol(); 
@@ -94,46 +98,30 @@ $("#commForm").submit(function(e){
 //=================================================================
 function KEYWORD() {
     if ($matchedWord === "flick") {
-      
-      if ($searchWord4 !== undefined) {
-        console.log("FOURTH WORD" + " " + $searchWord4);
-        var filmInput4 = $searchWord1 + " " + $searchWord2 + " " + $searchWord3 + " " + $searchWord4;
-        searchOmdb(filmInput4);
-        console.log(filmInput4 );
-      } else if ($searchWord3 !== undefined) {
-        console.log("THIRD WORD" + " " + $searchWord3);
-        var filmInput3 = $searchWord1 + " " + $searchWord2 + " " + $searchWord3;
-        searchOmdb(filmInput3);
-      } else if ($searchWord2 !== undefined) {
-        console.log("SECOND WORD" + " " + $searchWord2);
-        var filmInput2 = $searchWord1 + " " + $searchWord2;
-        searchOmdb(filmInput2);
-      } else {
-      console.log("do function with" + " " + $searchWord1);
-      var filmInput = $searchWord1;
-      searchOmdb(filmInput);
-      }
+      searchOmdb();
+      // if ($searchWord4 !== undefined) {
+      //   console.log("FOURTH WORD" + " " + $searchWord4);
+      //   var filmInput4 = $searchWord1 + " " + $searchWord2 + " " + $searchWord3 + " " + $searchWord4;
+      //   searchOmdb(filmInput4);
+      //   console.log(filmInput4 );
+      // } else if ($searchWord3 !== undefined) {
+      //   console.log("THIRD WORD" + " " + $searchWord3);
+      //   var filmInput3 = $searchWord1 + " " + $searchWord2 + " " + $searchWord3;
+      //   searchOmdb(filmInput3);
+      // } else if ($searchWord2 !== undefined) {
+      //   console.log("SECOND WORD" + " " + $searchWord2);
+      //   var filmInput2 = $searchWord1 + " " + $searchWord2;
+      //   searchOmdb(filmInput2);
+      // } else {
+      //   console.log("do function with" + " " + $searchWord1);
+      //   var filmInput = $searchWord1;
+      //   searchOmdb(filmInput);
+      // }
     }//END OF FILM CONDITIONS
 
     if ($matchedWord === "answer") {
-      if ($searchWord4 !== undefined) {
-        console.log("FOURTH WORD" + " " + $searchWord4);
-        var questionInput4 = $searchWord1 + " " + $searchWord2 + " " + $searchWord3 + " " + $searchWord4;
-        searchQuestion(questionInput4);
-      } else if ($searchWord3 !== undefined) {
-        console.log("THIRD WORD" + " " + $searchWord3);
-        var questionInput3 = $searchWord1 + " " + $searchWord2 + " " + $searchWord3;
-        searchQuestion(questionInput3);
-      } else if ($searchWord2 !== undefined) {
-        console.log("SECOND WORD" + " " + $searchWord2);
-        var questionInput2 = $searchWord1 + " " + $searchWord2;
-        searchQuestion(questionInput2);
-      } else {
-        console.log("do function with" + " " + $searchWord1);
-        var questionInput = $searchWord1;
-        searchQuestion(questionInput);
-      }
-    }
+      searchQuestion();
+    }//END OF SEARCH ANSWER
 
 }//END OF KEYWORD FUNCTION
 //=================================================================
@@ -176,21 +164,27 @@ function symbol() {
 //=================================================================
 function noCompute() {
     $("#reply").append($('<li>').text('do not understand'));
+    $("#command").val("");
   }
 function greeting() {
     $("#reply").append($('<li>').text('YO, wassup?'));
+    $("#command").val("");
   }
 function identify() {
     $("#reply").append($('<li>').text('I am J.S.A.I.N, the JavaScript Artificial Intelligence Network'));
+    $("#command").val("");
   }
 function reply() {
    $("#reply").append($('<li>').text('lame...'));
+   $("#command").val("");
   }
 function goodbye() {
    $("#reply").append($('<li>').text('PEACE!'));
+   $("#command").val("");
   }
 function insult() {
     $("#reply").append($('<li>').text('you are' + ' ' + $matchedWord));
+    $("#command").val("");
   }
 //=================================================================
 
@@ -199,26 +193,38 @@ function insult() {
 //================================================================
 //CALL TO OMDB API
 function searchOmdb(input) {
-  $.getJSON("http://www.omdbapi.com/", {s:input}, function (data) {
+  $.getJSON("http://www.omdbapi.com/", {t: $questionFormat}, function (data) {
         // var $results = $("#results").empty();
+        console.log(data);
         if (data.Error) {
           $("#reply").append($('<li>').text('I do not know that one!'));
           // $results.html("No results found.");
         } else {
-          data.Search.forEach(function (movie) {
-            $("#reply").append($('<li>').text(movie.Title));
-            // var li = $("<li></li>").text(movie.Title);
-            // $results.append(li);
-          });
+          $("#reply").append($('<li>').text(data.Title + " , " + data.Plot));
+          // data.Search.forEach(function (movie) {
+          //   console.log(movie);
+          //   $("#reply").append($('<li>').text(movie.Title));
+          //   $("#command").val("");
+          // });
         }
       });
 }
+
+//CALL TO QUESTION/ ANSWER API
 function searchQuestion(input) {
-  unirest.get("https://webknox-question-answering.p.mashape.com/questions/quickAnswers?question=" + input)
-  .header("X-Mashape-Key", "MQPalSdM4lmshvpdJzl5GExkJExnp1S0q6xjsn0JlgNq889sAS")
-  .header("Accept", "application/json")
-  .end(function (result) {
-    console.log(result.status, result.headers, result.body);
+ var QUESTION = { search: $questionFormat };
+  $.get( '/search', QUESTION, function (data) {
+    console.log(data);
+    console.log(data.body.output[0].actions.say);
+    var reply = data.body.output[0].actions.say;
+    for(var key in reply){
+      ANSWER = reply[key];
+      console.log(ANSWER);
+      $("#reply").append($('<li>').text(ANSWER));
+      $("#command").val("");
+    }
+    // ANSWER = $value;
+    // console.log(ANSWER);
   });
 }
 //=================================================================

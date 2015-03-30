@@ -2,15 +2,9 @@ var natural = require('natural');
 natural.PorterStemmer.attach();
 tokenizer = new natural.WordTokenizer();
 var nounInflector = new natural.NounInflector();
+//Requires the api package for the question answering api
+var unirest = require('unirest');
 
-// console.log(tokenizer.tokenize("your dog has fleas."));
-// var natural = require('natural'), 
-// stemmer = natural.PorterStemmer;
-// var natural = require('natural'),
-// tokenizer = new natural.WordTokenizer();
-// stemmer.attach();
-// var stemmer = require('natural').PorterStemmer;
-// stemmer = natural.PorterStemmer;
 
 var _ = require('underscore');
 var express = require("express");
@@ -26,9 +20,6 @@ app.get("/", function(req, res){
   
   res.render("index");
 
-  // var val = req.query.command;
-  // var tokenstem = val.tokenizeAndStem();
-  // res.send(tokenstem);
     
 });
 
@@ -38,6 +29,20 @@ app.get("/go", function(req, res){
   console.log(val);
   var tokenstem = val.tokenizeAndStem();
   res.send(tokenstem);
+});
+
+app.get("/search", function(req, res){
+  var question = req.query.search;
+  unirest.get("https://siris.p.mashape.com/json?clientFeatures=all&input=" + question + "&locale=en&timeZone=%2B120")
+  .header("X-Mashape-Key", "MQPalSdM4lmshvpdJzl5GExkJExnp1S0q6xjsn0JlgNq889sAS")
+  .header("Accept", "application/json")
+  .end(function (result) {
+  console.log(result.status, result.headers, result.body);
+  console.log(result.output);
+  var answer = result;
+  res.send(answer);
+});
+  
 });
 
 
@@ -50,8 +55,15 @@ app.listen(1337, function(){
 
 
 
-
-
+//OTHER REQUIREMENTS
+// console.log(tokenizer.tokenize("your dog has fleas."));
+// var natural = require('natural'), 
+// stemmer = natural.PorterStemmer;
+// var natural = require('natural'),
+// tokenizer = new natural.WordTokenizer();
+// stemmer.attach();
+// var stemmer = require('natural').PorterStemmer;
+// stemmer = natural.PorterStemmer;
 
 
 // app.get("/", function(req, res){

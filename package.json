@@ -14,6 +14,7 @@
     "express": "^4.12.3",
     "lapack": "^0.1.0",
     "natural": "^0.2.1",
-    "underscore": "^1.8.2"
+    "underscore": "^1.8.2",
+    "unirest": "^0.4.0"
   }
 }
