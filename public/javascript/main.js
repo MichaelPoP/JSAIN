@@ -75,6 +75,7 @@ function inputReady (INPUT) {
       }
     }
   }); //END OF FOREACH ITERATOR
+eyeOn();
 }
 }); //END OF SUBMIT FUNCTION
 
@@ -129,7 +130,10 @@ function searchOmdb(input) {
       });
 }
 
-
+function eyeOn () {
+  document.getElementById("glow").style.visibility = "visible";
+  setTimeout(function(){document.getElementById("glow").style.visibility = "hidden";}, 500);
+}
 
 
 
