@@ -1,30 +1,44 @@
 // var natural = require('natural'),
 // tokenizer = new natural.WordTokenizer();
 
-
-
-$("#commForm").submit(function(e){
-
-    e.preventDefault();
-    keywords = ['define', 'find', 'show'];
-    greetings = ['hello', 'hi', 'yo'];
-    goodbyes = ['goodbye', 'later', 'bye'];
-    insults = ['boring', 'stupid', 'lame'];
-    arrayList = [keywords, greetings, goodbyes, insults];
-   var INPUT = $("#command").val().split(" ");
-   // console.log($("#command").val().split(" "));
-  // console.log(stemmer.stem("words"));
-   //THIS IS WHAT I WOULD LIKE TO USE!!!
+//THIS IS WHAT I WOULD LIKE TO USE!!!
    //=================================
-   var INPUTtoken = tokenizer.tokenize(INPUT);
-   console.log(INPUTtoken);
+   // var INPUTtoken = tokenizer.tokenize(INPUT);
+   // console.log(INPUTtoken);
    //=================================
+
 // for(var x=0;x<INPUT.length;x++){
 //   console.log(INPUT[x]);
 //      checkArrays(INPUT[x]);
 // }
 
-console.log(INPUT);
+
+keywords = ['define', 'find', 'show'];
+greetings = ['hello', 'hi', 'yo'];
+goodbyes = ['goodbye', 'later', 'bye'];
+insults = ['boring', 'stupid', 'lam'];
+arrayList = [keywords, greetings, goodbyes, insults];
+ var INPUT;
+
+$("#commForm").submit(function(e){
+
+  e.preventDefault();
+// var soconfused = function () {
+  var origINPUT = { search: $("#command").val() };
+  $.get( '/go', origINPUT, function(data) {
+    console.log(data);
+    INPUT = data;
+    inputReady(INPUT);
+  });
+// return INPUT;
+// }();
+
+  //ORIGINAL INPUT FORMAT
+  //=======================
+   // var INPUT = $("#command").val().split(" ");
+  //=======================
+function inputReady (INPUT) {
+  console.log(INPUT);
   INPUT.forEach(function(element) {
     console.log(element);
     for(var i=0;i<arrayList.length;i++) {
@@ -60,8 +74,8 @@ console.log(INPUT);
         
       }
     }
-  });
-
+  }); //END OF FOREACH ITERATOR
+}
 }); //END OF SUBMIT FUNCTION
 
 
@@ -98,7 +112,7 @@ function insult() {
     $("#reply").append($('<li>').text('you are' + ' ' + $matchedWord));
   }
 
-  
+
 function searchOmdb(input) {
   $.getJSON("http://www.omdbapi.com/", {s:input}, function (data) {
         // var $results = $("#results").empty();

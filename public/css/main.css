@@ -17,3 +17,15 @@ li {color:black;}
 
 #helpButton {margin-top: 20px;}
 
+
+#eye {
+  font-size: 35px;
+  margin-bottom: 12px;
+}
+#glow {
+  height: 25px;
+  width: 27px;
+  background-color: red;
+  border-radius: 50px;
+  margin-bottom: 12px;
+}
