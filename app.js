@@ -1,5 +1,5 @@
 var natural = require('natural');
-natural.LancasterStemmer.attach();
+natural.PorterStemmer.attach();
 tokenizer = new natural.WordTokenizer();
 var nounInflector = new natural.NounInflector();
 
