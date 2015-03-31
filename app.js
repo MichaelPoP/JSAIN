@@ -26,8 +26,9 @@ app.get("/", function(req, res){
 app.get("/go", function(req, res){
   
   var val = req.query.search;
-  console.log(val);
+  // console.log(val);
   var tokenstem = val.tokenizeAndStem();
+  console.log(tokenstem);
   res.send(tokenstem);
 });
 
@@ -37,8 +38,8 @@ app.get("/search", function(req, res){
   .header("X-Mashape-Key", "MQPalSdM4lmshvpdJzl5GExkJExnp1S0q6xjsn0JlgNq889sAS")
   .header("Accept", "application/json")
   .end(function (result) {
-  console.log(result.status, result.headers, result.body);
-  console.log(result.output);
+  // console.log(result.status, result.headers, result.body);
+  // console.log(result.output);
   var answer = result;
   res.send(answer);
 });
