@@ -48,28 +48,34 @@ $questionFormat = $("#command").val().split(" ").slice(1).join("+");
 //THE FOLLOWING LOOPS THROUGH THE RESPONSE ARRAYS AND COMPARES THE USER INPUT
 //DECIDES WHICH OUTPUT FUNCTION TO CALL DEPENDING ON ARRAY MATCHES
 //=================================================================
+
   function inputReady (INPUT) {
+    var anything = false;
     console.log(INPUT);
-    INPUT.forEach(function(element) {
-      console.log(element);
+    for(var x=0;x<keywords.length;x++) {
+        console.log("the keyword is", INPUT[0]);
+          if(keywords[x] === INPUT[0]) {
+            anything = true;
+            console.log(x);
+            console.log("keyword array");
+            $matchedWord = keywords[x];
+          }    
+    }//END OF KEYWORDS FOR-LOOP
+      
+    if (anything) {
+      console.log($matchedWord);
+      KEYWORD();
+    } else {
+      INPUT.forEach(function(element) {
       for(var i=0;i<arrayList.length;i++) {
         for(var j=0;j<arrayList[i].length;j++) {
         // console.log("hi", arrayList[i][j], arrayList);
+
           if(arrayList[i][j] === element) {
             console.log(i, j, arrayList[i], arrayList[i][j]);
             $matchedWord = arrayList[i][j];
 
-            if(i === 0) {
-              console.log(i);
-                console.log("keyword array");
-                // console.log(arrayList[i][j], arrayList[i][2]);
-                // console.log(INPUT[i+1], INPUT[i+2], INPUT[i+3], INPUT[i+4]);
-                // $searchWord1 = INPUT[i+1];
-                // $searchWord2 = INPUT[i+2];
-                // $searchWord3 = INPUT[i+3];
-                // $searchWord4 = INPUT[i+4];
-              return KEYWORD();
-            } else if (i === 1){
+            if (i === 1){
               console.log("symbol array");
               symbol(); 
             } else if (i === 2){
@@ -87,7 +93,11 @@ $questionFormat = $("#command").val().split(" ").slice(1).join("+");
           }     
         }
       }
-    }); //END OF FOREACH ITERATOR
+    }); 
+    }
+    
+      
+     //END OF FOREACH ITERATOR
     eyeOn();
   }
 }); //END OF SUBMIT FUNCTION
@@ -216,13 +226,15 @@ function searchQuestion(input) {
   $.get( '/search', QUESTION, function (data) {
     console.log(data);
     console.log(data.body.output[0].actions.say);
-    var reply = data.body.output[0].actions.say;
-    for(var key in reply){
-      ANSWER = reply[key];
-      console.log(ANSWER);
-      $("#reply").append($('<li>').text(ANSWER));
+    var reply = data.body.output[0].actions.say.text;
+    // for(var key in reply){
+    //   ANSWER = reply[key];
+    //   console.log(ANSWER);
+    // }
+      
+      $("#reply").append($('<li>').text(reply));
       $("#command").val("");
-    }
+    
     // ANSWER = $value;
     // console.log(ANSWER);
   });
