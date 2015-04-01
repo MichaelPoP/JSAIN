@@ -27,7 +27,7 @@ var INPUT;
 
 $("#commForm").submit(function(e){
   e.preventDefault();
-  $("#reply").append($('<li>').text($("#command").val()));
+  $("#reply").append($('<li>').text(localUsername + " : " + $("#command").val()));
   $("#command").text(" ");
   console.log("questionFormat" + " >> " + $("#command").val().split(" ").slice(1).join("+"));
   console.log("mapSearchFormat" + " >> " +$("#command").val().split(" ").slice(1).join(" "));
@@ -228,12 +228,26 @@ function insult() {
     $("#command").val("");
 }
 function curses() {
+  num = Math.random();
+  console.log(num);
+  if (0.5 > num > 0) {
     $("#reply").append($('<li>').text('You should not swear..'));
     // document.getElementById("glow").style.visibility = "visible";
     setTimeout(function(){
       $("#reply").append($('<li>').text('you' + ' ' + $matchedWord));
       document.getElementById("glow").style.visibility = "visible";
     }, 2500);
+
+  } else if (1 > num > 0.5) {
+     $("#reply").append($('<li>').text('Well that was not called for...'));
+    // document.getElementById("glow").style.visibility = "visible";
+    setTimeout(function(){
+      $("#reply").append($('<li>').text('you' + ' ' + $matchedWord));
+      document.getElementById("glow").style.visibility = "visible";
+    }, 2500);
+  }
+
+    
     $("#command").val("");
 }
 //=================================================================
@@ -287,8 +301,9 @@ function searchQuestion() {
 function yodaReply (input) {
   var statement = { search: $questionFormat };
   $.get( '/yoda', statement, function (data) {
-    console.log(data);
-
+    console.log(data.body);
+    $("#reply").append($('<li>').text(data.body));
+    $("#command").val("");
   });
 }
 
@@ -313,7 +328,8 @@ function searchLyrics() {
   var artistSong = {artistSong: searchArr};
   $.get( '/lyrics', artistSong, function (data) {
     console.log(data);
-    console.log(typeof(data.body));
+    console.log(typeof(data.body), data.body);
+    $("#reply").append($('<li>').text(data.body));
   });
 
 }
@@ -365,7 +381,6 @@ function endflicker () {
 }
 
 eyeFlicker = $("#eye");
-console.log(eyeFlicker);
 eyeFlicker[0].addEventListener("mouseover", setflicker);
 eyeFlicker[0].addEventListener("mouseout", endflicker);
 });

@@ -88,6 +88,7 @@ app.get("/lyrics", function(req, res){
     .header("X-Mashape-Key", "PGgxm8hbrhmshCXHXt067DSORcunp1Sni55jsnYozgx4fqt2vc")
     .header("Accept", "application/json")
     .end(function (result) {
+      console.log(result);
       console.log(result.status, result.headers, result.body);
       var lyrics = result;
       res.send(lyrics);
