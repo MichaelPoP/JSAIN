@@ -1,22 +1,23 @@
-body { background-color: #5E84AE;}
+#BACK {background-color: black;}
 #title {font-family: 'Geostar Fill', cursive;}
 
 
+#questBox {margin-bottom: 10px;height: 20px;}
+#randQuest { text-shadow: 0 0 5px #FFF, 0 0 5px #FFF;}
 
-
-
-
+li {font-family: monospace;font-weight: 600;}
 #reply {list-style-type: none; margin:0; padding: 0;}
 #reply li { padding:5px 10px; }
-#reply li:nth-child(odd) {background: #5F5F5F}
-#replyBox {height:350px;width:800px;color:black;}
+#reply li:nth-child(odd) {background: #7D7D7D}
+#replyBox {height:300px;width:800px;color:black;}
 li {color:black;}
 .overflow { height: 200px; overflow-y: scroll; overflow-x: hidden;}
 #inputSpace {width:100px; height: 50px;}
 
 
-#helpButton {margin-top: 20px;}
-
+#helpButton {margin-left: 15px; margin-top: 15px;}
+#questButton {margin-top: 15px;}
+#mapButton {display:none;}
 
 #eye {
   font-size: 35px;
@@ -28,13 +29,31 @@ li {color:black;}
   width: 18px;
   background-color: red;
   border-radius: 50px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   position: relative;
   top: -30px;
   z-index: -100;
   box-shadow: -7px -7px 13px #ED2120, 7px 7px 13px #ED2120, 7px -7px 13px #ED2120, -7px 7px 13px #ED2120;
 }
 
+
+#navstyle {
+  background: transparent;
+  background-color: transparent;
+  border-color: transparent;
+  text-shadow: 0 0 5px #FFF, 0 0 5px #FFF;
+  font-variant: small-caps;
+  letter-spacing: 3px;
+  text-align: center;
+  font-size: 21px;
+  font-weight: bolder;
+  font-family: arial;
+}
+.floatleft {float: left;margin-left: -30px;}
+
+.floatright {float: right;padding-top: 5px;}
+/*=======================LANDING PAGE CSS==========================*/
+#confirm {visibility: hidden;}
 
 
 

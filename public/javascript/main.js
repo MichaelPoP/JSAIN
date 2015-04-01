@@ -15,7 +15,7 @@
 //THESE ARRAYS HOLD THE POSSIBLE USER INPUTS
 //=================================================================
 
-keywords = ['define', 'flick', 'find', 'ask'];
+keywords = ['def', 'flick', 'loc', 'ask', 'yoda', 'lyric'];
 symbols = ['!', '?', '/'];
 greetings = ['hello', 'hi', 'yo'];
 goodbyes = ['goodbye', 'later', 'bye'];
@@ -26,10 +26,14 @@ arrayList = [keywords, symbols, greetings, goodbyes, insults, swearWords];
 var INPUT;
 
 $("#commForm").submit(function(e){
-
   e.preventDefault();
-console.log($("#command").val().split(" ").slice(1).join("+"));
-$questionFormat = $("#command").val().split(" ").slice(1).join("+");
+  $("#reply").append($('<li>').text($("#command").val()));
+  $("#command").text(" ");
+  console.log("questionFormat" + " >> " + $("#command").val().split(" ").slice(1).join("+"));
+  console.log("mapSearchFormat" + " >> " +$("#command").val().split(" ").slice(1).join(" "));
+  $questionFormat = $("#command").val().split(" ").slice(1).join("+");
+  $mapSearchFormat = $("#command").val().split(" ").slice(1).join(" ");
+console.log($("#command").val().split(" ").slice(1));
 
 //THIS GETS THE CONVERTED INPUT FROM THE SERVER SIDE
 //=================================================================
@@ -41,16 +45,12 @@ $questionFormat = $("#command").val().split(" ").slice(1).join("+");
   });
 //=================================================================
 
-  //ORIGINAL INPUT FORMAT
-  //=======================
-   // var INPUT = $("#command").val().split(" ");
-  //=======================
-
 //=================================================================
 //THE FOLLOWING LOOPS THROUGH THE RESPONSE ARRAYS AND COMPARES THE USER INPUT
 //DECIDES WHICH OUTPUT FUNCTION TO CALL DEPENDING ON ARRAY MATCHES
 //=================================================================
-
+//THE INPUTREADY FUNCTION SEPERATES COMMANDS WHICH INCLUDE A KEYWORD AT THE BEGINNING FROM
+//THOSE WHICH DON'T AND CALL THE APPROPRIATE FUNCTIONS
   function inputReady (INPUT) {
     var anything = false;
     console.log(INPUT);
@@ -120,8 +120,20 @@ function KEYWORD() {
       searchQuestion();
     }//END OF SEARCH ANSWER
 
-    if ($matchedWord === "define") {
+    if ($matchedWord === "def") {
       searchDictionary();
+    }
+
+    if ($matchedWord === "loc") {
+      showMap();
+    }
+
+    if ($matchedWord === "yoda") {
+      yodaReply();
+    }
+
+    if ($matchedWord === "lyric") {
+      searchLyrics();
     }
 
 }//END OF KEYWORD FUNCTION
@@ -227,6 +239,8 @@ function curses() {
 //=================================================================
 
 
+
+
 //EXTERNAL API CALLS
 //================================================================
 //CALL TO OMDB API
@@ -251,7 +265,7 @@ function searchOmdb(input) {
 }
 
 //CALL TO QUESTION/ ANSWER API
-function searchQuestion(input) {
+function searchQuestion() {
  var QUESTION = { search: $questionFormat };
   $.get( '/search', QUESTION, function (data) {
     console.log(data);
@@ -270,31 +284,112 @@ function searchQuestion(input) {
   });
 }
 
+function yodaReply (input) {
+  var statement = { search: $questionFormat };
+  $.get( '/yoda', statement, function (data) {
+    console.log(data);
+
+  });
+}
+
+
 function searchDictionary() {
+  var word = { search: $mapSearchFormat };
+  $.get( '/dictionary', word, function (data) {
+    console.log(data);
+    console.log(data.body.definitions[0].text);
+    var reply = data.body.definitions[0].text;
+    $("#reply").append($('<li>').text(reply));
+    $("#command").val("");
+
+  });
 
 }
+
+
+function searchLyrics() {
+  console.log($mapSearchFormat.split(" "));
+  var searchArr = $("#command").val().split(" ").slice(1);
+  var artistSong = {artistSong: searchArr};
+  $.get( '/lyrics', artistSong, function (data) {
+    console.log(data);
+    console.log(typeof(data.body));
+  });
+
+}
+//GOOGLE TEXT TO SPEECH HACK
+//=================================================================
+// url = "http://translate.google.com/translate_tts?tl=en&q=speak%22";
+
+
+
+
+
+
+
+
+
+
 //=================================================================
 
 
 
-//STYLING CODE
+//STYLING & JQUERY CODE
 //=================================================================
 function eyeOn () {
   document.getElementById("glow").style.visibility = "visible";
   setTimeout(function(){document.getElementById("glow").style.visibility = "hidden";}, 500);
 }
 
-$(document).ready(function(){
+// HELP MODAL
+
   $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').focus();
   });
-});
-
-
 //=================================================================
 
- // setInterval(function showQuest() {
+// GOOGLE MAP MODAL 
+//=================================================================
+function showMap () {
+  var url = encodeURI("https://maps.googleapis.com/maps/api/geocode/json?address=" + $mapSearchFormat + "&key=AIzaSyDE6F79FbnrSc9hZlurECTyBJoEyHCj-Nc");
+  $.getJSON(url, function(data) {
+        // console.log(data);
+      $newLat = data.results[0].geometry.location.lat; // json result stored in variable
+      $newLng = data.results[0].geometry.location.lng; // json result stored in variable
+    console.log($newLat, $newLng);
+      // start = new google.maps.LatLng(startLat, startLng);
 
+      // addMarker(); // calling function to drop marker on map
+    });
+  $(document).ready(function(){
+    
+
+    function initialize() {
+      var mapOptions = {
+        center: new google.maps.LatLng($newLat, $newLng),
+        zoom: 7,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      var map = new google.maps.Map(document.getElementById("map-canvas"),
+        mapOptions);
+      // var marker = new google.maps.Marker({
+      //   position: new google.maps.LatLng(51.219987, 4.396237)
+      // });
+      // marker.setMap(map);
+    }
+      $('#mapButton').trigger("click");
+
+      $('#mapModal').on('shown.bs.modal', function () {
+        initialize();
+        google.maps.event.trigger("resize");
+      });
+
+  });//END DOC-READY 
+}//END SHOW MAP FUNCTION
+
+
+//BUTTON THAT GENERATES A RANDOM QUESTION AND SETS IT AS INPUT VALUE
+//=================================================================
 $('#questButton').click(function(e) {
 e.preventDefault();
 $(document).ready(function () {
@@ -324,11 +419,128 @@ function xmlParser (xml) {
     $("#command").text(TEXT[number].innerHTML);
     // $("#command").text(" ");
   });
-}
-});
-// showQuest();
 
-// }, 4000);
+}
+
+});
+
+//DISPLAYS A RANDOM QUESTION AT A "SET INTERVAL"
+//=================================================================
+// setInterval(function showQuest() {
+// $(document).ready(function () {
+// $.ajax({
+//     type: "GET",
+//     url: "popQuestions.xml",
+//     dataType: "xml",
+//     success: xmlParser
+//    });
+// });
+// function xmlParser (xml) {
+//   console.log(xml);
+//   $(xml).find("suggestionset").each(function () {
+//     var TEXT = $(this).find("text");
+//     console.log($(this).find("text").first());
+//     console.log(TEXT);
+//     var decimal = Math.random() * (962 - 1) + 1;
+//     var number =  Math.round(decimal);
+//     console.log(number);
+//     console.log(TEXT[0]);
+//     console.log(typeof(TEXT[number].innerHTML), TEXT[number].innerHTML);
+//     var temp = TEXT[number].innerHTML;
+//     console.log(temp);
+//     // $("#reply").append($('<li>').text(TEXT[number].innerHTML));
+//     $("#randQuest").append(TEXT[number].innerHTML).hide().fadeIn(700); 
+//   });
+// }
+// $("#randQuest").text(" ");
+// }, 5000);
+//=================================================================
+
+
+
+//LOCAL STORAGE CODE
+//=================================================================
+
+var username;
+var color;
+var localUsercolor;
+var localUsername;
+//FORM SUBMIT FUNCTION FOR PICKING A COLOR AND NAME 
+$("#userForm").on("submit", function(e) {
+  e.preventDefault();
+  username = $("#nameInput").val();
+  color = $("#colorPick").val();
+
+  // localStorage.setItem("name", username);
+  // localStorage.setItem("bgcolor", color);
+  localStorage.setItem("name", username);
+  localStorage.setItem("bgcolor", color);
+
+  localUsername = localStorage.getItem("name");
+  localUsercolor = localStorage.getItem("bgcolor");
+  
+    console.log(localUsername);
+    console.log(localUsercolor);
+$("#show").text(localUsername);
+document.getElementById("BACK").style.background = localUsercolor;
+document.getElementById("confirm").style.visibility = "visible";
+});
+
+//SETS THE USERNAME AND BGCOLOR TO THE USERS CHOICE
+localUsercolor = localStorage.getItem("bgcolor");
+document.getElementById("BACK").style.background = localUsercolor;
+
+localUsername = localStorage.getItem("name");
+ $("#nameDisplay").html(localUsername);
+
+
+
+//=================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

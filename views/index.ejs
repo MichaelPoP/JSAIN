@@ -1,35 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>JSAIN</title>
-    <link href='http://fonts.googleapis.com/css?family=Geostar+Fill' rel='stylesheet' type='text/css'>
-
-  <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-  <style>
-    /*#reply {list-style-type: none; margin:0; padding: 0;}
-    #reply li { padding:5px 10px; }
-    #reply li:nth-child(odd) {background: #5F5F5F}
-    #replyBox {height:200px;width:200px;color:black;}
-    li {color:black;}
-    .overflow { height: 200px; overflow-y: scroll; overflow-x: hidden;}*/
-    /*body { background-color: #DF231A;}*/
-  </style>
-
-  <link rel="stylesheet" type="text/css" href="/css/main.css">
-
-</head>
-<body class="container-fluid">
+<% include head.ejs %>
 <center>
 
 
-<!-- Modal -->
+<!-- HELP MODAL -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -38,7 +11,10 @@
         <h4 class="modal-title" id="myModalLabel">How to use JSAIN</h4>
       </div>
       <div class="modal-body">
-        ...
+        <h4>Use keywords</h4>
+        <p>ask -  followed by a question </p> 
+        <p>flick -  followed by a movie title </p>
+        <p>loc -  followed by a location </p>  
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -46,23 +22,58 @@
     </div>
   </div>
 </div>
+<!-- END OF HELP MODAL -->
 
-
-
-<h1 id="title">J.S.A.I.N</h1>
-<h4>"Say Hello"</h4>
-<br>
-<div>
-<span id ="eye" class="glyphicon glyphicon-eye-open">
-<div id="glow"></div>
-</span>
+<!-- GOOGLE MAP MODAL -->
+<div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">HERE IS WHERE THAT IS</h4>
+      </div>
+      <div class="modal-body">
+         <div id="map-canvas" style="width: 500px; height: 400px"></div>  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
+<!-- END OF GOOGLE MAP MODAL -->
+<nav id="navstyle" class="navbar navbar-default navbar-fixed-top mynav">
+    <div class="container">
+      <ul>
+      <a href="/"><div class="floatleft"><h1 id="title">J.S.A.I.N</h1></div></a> 
+      <div class="floatright"><h4>Say Hello</h4><h4 id="nameDisplay"></h4></div>
+      </ul>
+    </div>
+
+</nav>
+
+<div class="row">
+  
+  <br>
+  <div>
+    <span id ="eye" class="glyphicon glyphicon-eye-open">
+      <div id="glow"></div>
+    </span>
+  </div>
+
+</div>
+
+
+<div id="questBox">
+  <h3 id="randQuest"></h3>
+</div>
+
 <div id="replyBox" class="overflow well well-lg">
   <ul id="reply"></ul>
 </div>
 
 <form id="commForm" action="">
-  <textarea id="command" autocomplete="on" type="text" cols=60 rows=4></textarea>
+  <textarea id="command" autocomplete="on" type="text" cols=60 rows=3 autofocus= true></textarea>
   <br>
   <input size="100" id="inputSpace" type="submit" class="btn btn-success btn-lg">
 </form>
@@ -72,25 +83,16 @@
   HOW TO USE
 </button>
 <button id="questButton" type="button" class="btn btn-info btn-lg">
-  
+  RANDOM QUESTION
 </button>
-
+<button id="mapButton", type="button", data-toggle="modal" data-target="#mapModal"></button>
 
 </center>
-<script>
-  
-
-
-</script>
-
 
 
 <!-- <script type="text/javascript" src="bundle.js"></script> -->
 <!-- <script src="app.js"></script> -->
-
-<script type="text/javascript" src="/javascript/main.js"></script>  
-</body>
-</html>
+<% include foot.ejs %>
 
 
 
