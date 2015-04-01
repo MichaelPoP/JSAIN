@@ -9,6 +9,27 @@ relavant information.
 
 DESCRIPTION
 The application basically consists of a MVC framework with only a couple view pages. The main page is the focus of the logic and 
-consists of a single user input and chat window that holds replies and inputs between the user and the javascript. 
+consists of a single user input and chat window that holds replies and inputs between the user and the javascript. The user utilizes keywords in order to return more specific responses on a variety of topics.
+
+TECHNOLOGY
+
+JSAIN uses multiple APIs in order to better mimic computer intelligence. 
+Here are the APIs used:
+
+- Siri
+- Omdb
+- MusicXmatch
+- Yoda Speak
+- Google Maps
+- Montana-flynn Dictionary
+
+In addition to external APIs JSAIN utilizes a few node packages to improve the functionality and make the development process easier.
+Here are some of the node packages used:
+
+- "express" Framework for Node
+- "unirest" API Request Facilitator
+- "natural" Natural Language Processing Facility
+- "ejs" for the views
+
 
 

@@ -468,34 +468,34 @@ function xmlParser (xml) {
 
 //DISPLAYS A RANDOM QUESTION AT A "SET INTERVAL"
 //=================================================================
-// setInterval(function showQuest() {
-// $(document).ready(function () {
-// $.ajax({
-//     type: "GET",
-//     url: "popQuestions.xml",
-//     dataType: "xml",
-//     success: xmlParser
-//    });
-// });
-// function xmlParser (xml) {
-//   console.log(xml);
-//   $(xml).find("suggestionset").each(function () {
-//     var TEXT = $(this).find("text");
-//     console.log($(this).find("text").first());
-//     console.log(TEXT);
-//     var decimal = Math.random() * (962 - 1) + 1;
-//     var number =  Math.round(decimal);
-//     console.log(number);
-//     console.log(TEXT[0]);
-//     console.log(typeof(TEXT[number].innerHTML), TEXT[number].innerHTML);
-//     var temp = TEXT[number].innerHTML;
-//     console.log(temp);
-//     // $("#reply").append($('<li>').text(TEXT[number].innerHTML));
-//     $("#randQuest").append(TEXT[number].innerHTML).hide().fadeIn(700); 
-//   });
-// }
-// $("#randQuest").text(" ");
-// }, 5000);
+setInterval(function showQuest() {
+$(document).ready(function () {
+$.ajax({
+    type: "GET",
+    url: "popQuestions.xml",
+    dataType: "xml",
+    success: xmlParser
+   });
+});
+function xmlParser (xml) {
+  console.log(xml);
+  $(xml).find("suggestionset").each(function () {
+    var TEXT = $(this).find("text");
+    console.log($(this).find("text").first());
+    console.log(TEXT);
+    var decimal = Math.random() * (962 - 1) + 1;
+    var number =  Math.round(decimal);
+    console.log(number);
+    console.log(TEXT[0]);
+    console.log(typeof(TEXT[number].innerHTML), TEXT[number].innerHTML);
+    var temp = TEXT[number].innerHTML;
+    console.log(temp);
+    // $("#reply").append($('<li>').text(TEXT[number].innerHTML));
+    $("#randQuest").append(TEXT[number].innerHTML).hide().fadeIn(700); 
+  });
+}
+$("#randQuest").text(" ");
+}, 5000);
 //=================================================================
 
 
