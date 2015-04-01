@@ -21,8 +21,8 @@ li {color:black;}
 
 #eye {
   font-size: 35px;
-  
 }
+
 #glow {
   visibility: hidden;
   height: 18px;
@@ -35,7 +35,18 @@ li {color:black;}
   z-index: -100;
   box-shadow: -7px -7px 13px #ED2120, 7px 7px 13px #ED2120, 7px -7px 13px #ED2120, -7px 7px 13px #ED2120;
 }
-
+/*#glow:hover {
+  visibility: visible;
+  height: 18px;
+  width: 18px;
+  background-color: red;
+  border-radius: 50px;
+  margin-bottom: 15px;
+  position: relative;
+  top: -30px;
+  z-index: -100;
+  box-shadow: -7px -7px 13px #ED2120, 7px 7px 13px #ED2120, 7px -7px 13px #ED2120, -7px 7px 13px #ED2120;
+}*/
 
 #navstyle {
   background: transparent;

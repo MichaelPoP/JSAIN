@@ -336,13 +336,40 @@ function searchLyrics() {
 
 //STYLING & JQUERY CODE
 //=================================================================
+//CONTROLS THE A "I"
 function eyeOn () {
   document.getElementById("glow").style.visibility = "visible";
   setTimeout(function(){document.getElementById("glow").style.visibility = "hidden";}, 500);
 }
+var STOPint;
+$(document).ready(function(){
+function setflicker () {
+  console.log("START");
+STOPint = setInterval(function FLICKER () {
+  var ENDSWITCH;
+    setTimeout(function(){
+      console.log("ON");
+      document.getElementById("glow").style.visibility = "visible";
+    },100);
+    setTimeout(function(){
+      console.log("OFF");
+      document.getElementById("glow").style.visibility = "hidden";
+    }, 400);
+  }, 500); 
+} 
+function endflicker () {
+  console.log("END");
+  setTimeout(function(){
+    clearInterval(STOPint);
+  }, 2333);
+}
 
+eyeFlicker = $("#eye");
+console.log(eyeFlicker);
+eyeFlicker[0].addEventListener("mouseover", setflicker);
+eyeFlicker[0].addEventListener("mouseout", endflicker);
+});
 // HELP MODAL
-
   $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').focus();
   });
