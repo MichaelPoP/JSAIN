@@ -1,15 +1,56 @@
 <% include head.ejs %>
 <center>
+<div class="jumbotron myjumbo">
+<h1 id="welcome">Meet J.S.A.I.N</h1>
+<h3 id="pick">Pick a Name and Color</h3>
+</div>
 
-<h1>PICK A NAME AND COLOR</h1>
-
-<h2 id="show"></h2><div id="example"></div>
 
 <form id="userForm" action="javascript:void(0)">
-  <input id="nameInput" type="text" autofocus=true>
+  <input id="nameInput" type="text" size="25" maxlength="14"style="border:2px inset #3846A8" autofocus=true>
   <input id="colorPick" type="color" name="background_color">
-  <input size="100" class="btn btn-success btn-md" type="submit" value="choose">
+  <input size="100" class="btn btn-primary btn-md" type="submit" value="choose">
 </form>
-<a href="/home" id="confirm" class="btn btn-primary btn-lg">CONFIRM?</a>
+<h2 id="show"></h2>
+
+<a href="/home" id="confirm" class="btn btn-info btn-lg">CONFIRM?</a>
+
+
+
+<!-- ABOUT MODAL -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">About</h4>
+      </div>
+      <div class="modal-body">
+        <h3 class="paraTitle"><b>About J.S.A.I.N</b></h3>
+          <p>
+          J.S.A.I.N (JavaScript Artificial Intelligence Network) was created to demonstrate how javascript can be used to interpret natural language in the form of text and to show how AI already exists in 
+          the world-wide information network we know as the internet.
+          </p>
+        <h3 class="paraTitle"><b>About Creator</b></h3>
+          <p>
+            J.S.A.I.N was a project created by Michael Pospisil, as part of a Web Development Bootcamp at General Assembly in San Francisco. An interest in AI, NLP, and big data led to the desire to work on this project.
+          </p>
+          <img src="/mike.png" alt="" id="myPic">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END OF ABOUT MODAL -->
+
+<button id="aboutButton" type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#myModal">
+  MORE INFO
+</button>
+
 </center>
 <% include foot.ejs %>
+
+
+

@@ -48,6 +48,22 @@ li {color:black;}
   box-shadow: -7px -7px 13px #ED2120, 7px 7px 13px #ED2120, 7px -7px 13px #ED2120, -7px 7px 13px #ED2120;
 }*/
 
+/*================== MODAL CSS =================*/
+#myModalLabel {
+  font-family:'Geostar Fill', cursive;
+  font-size: 33px;
+}
+.paraTitle {
+  /*font-size: 22px;*/
+  font-variant: small-caps;
+}
+
+
+
+
+
+
+/*================ NAVBAR CSS =================*/
 #navstyle {
   background: transparent;
   background-color: transparent;
@@ -63,8 +79,42 @@ li {color:black;}
 .floatleft {float: left;margin-left: -30px;}
 
 .floatright {float: right;padding-top: 5px;}
+
+
 /*=======================LANDING PAGE CSS==========================*/
 #confirm {visibility: hidden;}
+.myjumbo {
+  font-variant: small-caps;
+  margin-left: 60px;
+  margin-right: 60px;
+  margin-top: 30px;
+  text-shadow: 0 0 5px #FFF, 0 0 5px #FFF;
+  background-image: url("/circuitBoard.png");
+  border: 5px inset #3E2EB7;
+  box-shadow: -2px -2px 20px #FFF, 2px 2px 20px #FFF, 2px -2px 20px #FFF, -2px 2px 20px #FFF;
+}
+#welcome {font-family: 'Geostar Fill', cursive;}
+#pick {font-weight: 900}
+
+#show {
+  margin-bottom: 40px;
+}
+
+
+#aboutButton {position: fixed;bottom: 7px;left:50px;}
+#myPic {height: 100px}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

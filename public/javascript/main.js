@@ -458,7 +458,7 @@ function xmlParser (xml) {
     
     // console.log(this);
     // $("#reply").append($('<li>').text(TEXT[number].innerHTML));
-    $("#command").text(TEXT[number].innerHTML);
+    $("#command").val("ask " + TEXT[number].innerHTML);
     // $("#command").text(" ");
   });
 
@@ -523,7 +523,7 @@ $("#userForm").on("submit", function(e) {
   
     console.log(localUsername);
     console.log(localUsercolor);
-$("#show").text(localUsername);
+$("#show").text("Chosen Name: " + localUsername);
 document.getElementById("BACK").style.background = localUsercolor;
 document.getElementById("confirm").style.visibility = "visible";
 });
