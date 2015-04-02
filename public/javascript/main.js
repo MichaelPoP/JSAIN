@@ -4,7 +4,7 @@
 //=================================================================
 
 keywords = ['def', 'flick', 'loc', 'ask', 'yoda', 'lyric'];
-pro_sentences = ['yes', 'no', 'mayb', 'affirmative', 'negative', 'yup', 'yeah', 'nope'];
+pro_sentences = ['ye', 'no', 'mayb', 'affirmative', 'negative', 'yup', 'yeah', 'nope'];
 greetings = ['hello', 'hi', 'yo', 'morn', 'afternoon', 'hei', 'wuddup', 'sup', 'howdy', 'greet'];
 goodbyes = ['goodbye', 'later', 'bye'];
 insults = ['bore', 'stupid', 'lam', 'dickwad', 'fatass', 'honkei', 'jagoff', 'shiznit', 'twat', 'wank', 'tard', 'nutsack', 'pecker', 'arse', 'dick', 'dickbag', 'dickfac', 'dickhead', 'dickwe', 'poonani'];
@@ -39,6 +39,7 @@ $("#commForm").submit(function(e){
 //=================================================================
 //THESE LOOPS AND CONDITIONALS ACCOUNT FOR WORDS THAT NATURAL OMITS DURING TOKENIZATION
 //=================================================================
+var isKeyword = false;
 if (isKeyword === false) {
 for(var w=0;w<$rawINPUT.length;w++) {
   if ($rawINPUT[w] === "you?" ) {
@@ -66,7 +67,7 @@ for(var r=0;r<$rawINPUT.length;r++) {
 //THE INPUT READY FUNCTION SEPERATES COMMANDS WHICH INCLUDE A KEYWORD AT THE BEGINNING FROM
 //THOSE WHICH DON'T AND CALL THE APPROPRIATE FUNCTIONS
   function inputReady (INPUT) {
-    var isKeyword = false;
+  
     console.log(INPUT);
     for(var x=0;x<keywords.length;x++) {
         console.log("the keyword is", INPUT[0]);
@@ -178,7 +179,7 @@ function KEYWORD() {
 function ProSentences () {
   if ($matchedWord === "yup") {affirm();}
 
-  if ($matchedWord === "yes") {affirm();}
+  if ($matchedWord === "ye") {affirm();}
 
   if ($matchedWord === "yup") {affirm();}
 
@@ -339,6 +340,7 @@ function howAIisReply () {
 }
 
 function whyReply () {
+  num = Math.random();
   if (0.5 > num > 0) {
     $("#reply").append($('<li>').text('Why do you think?'));
   } else if (1 > num > 0.5) {
