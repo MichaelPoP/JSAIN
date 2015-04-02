@@ -1,4 +1,5 @@
 # JSAIN
+http://jsain.herokuapp.com/home
 This application was built on Node.js and Express.js using Javascript and jQuery for the logic and using the assistance of 
 multiple npm packages such as 'natural' 'browserify' and 'ejs'.
 
