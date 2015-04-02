@@ -4,7 +4,7 @@
 //=================================================================
 
 keywords = ['def', 'flick', 'loc', 'ask', 'yoda', 'lyric'];
-pro_sentences = ['yes', 'no', 'maybe', 'affirmative', 'negative', 'yup', 'yeah'];
+pro_sentences = ['yes', 'no', 'mayb', 'affirmative', 'negative', 'yup', 'yeah', 'nope'];
 greetings = ['hello', 'hi', 'yo', 'morn', 'afternoon', 'hei', 'wuddup', 'sup', 'howdy', 'greet'];
 goodbyes = ['goodbye', 'later', 'bye'];
 insults = ['bore', 'stupid', 'lam', 'dickwad', 'fatass', 'honkei', 'jagoff', 'shiznit', 'twat', 'wank', 'tard', 'nutsack', 'pecker', 'arse', 'dick', 'dickbag', 'dickfac', 'dickhead', 'dickwe', 'poonani'];
@@ -39,6 +39,7 @@ $("#commForm").submit(function(e){
 //=================================================================
 //THESE LOOPS AND CONDITIONALS ACCOUNT FOR WORDS THAT NATURAL OMITS DURING TOKENIZATION
 //=================================================================
+if (isKeyword === false) {
 for(var w=0;w<$rawINPUT.length;w++) {
   if ($rawINPUT[w] === "you?" ) {
     console.log("HIT How are you");
@@ -47,6 +48,7 @@ for(var w=0;w<$rawINPUT.length;w++) {
     howAIisReply();
   }
 }
+
 for(var r=0;r<$rawINPUT.length;r++) {
   if ($rawINPUT[0] === "why" ) {
     console.log("HIT How are you");
@@ -55,6 +57,7 @@ for(var r=0;r<$rawINPUT.length;r++) {
     whyReply();
   } else if ($rawINPUT[0] === "because")
     whyReply();
+}
 }
 //=================================================================
 //THE FOLLOWING LOOPS THROUGH THE RESPONSE ARRAYS AND COMPARES THE USER INPUT
@@ -74,7 +77,7 @@ for(var r=0;r<$rawINPUT.length;r++) {
             $matchedWord = keywords[x];
           }    
     }//END OF KEYWORDS FOR-LOOP
-      
+    
     if (isKeyword) {
       console.log($matchedWord);
       KEYWORD();
@@ -90,8 +93,8 @@ for(var r=0;r<$rawINPUT.length;r++) {
               $matchedWord = arrayList[i][j];
 
               if (i === 1){
-                console.log("symbol array");
-                symbol(); 
+                console.log("pro_sentences array");
+                ProSentences(); 
               } else if (i === 2){
               // var insultReply = arrayList[i][j];
                console.log("greeting array");
@@ -112,7 +115,7 @@ for(var r=0;r<$rawINPUT.length;r++) {
               } else if (i === 7) {
                 console.log("howRUGood");
                 howRUGoodReply();
-              }
+              } 
             }
 
           }//INNER ARRAY LOOP
@@ -128,29 +131,17 @@ for(var r=0;r<$rawINPUT.length;r++) {
 //KEYWORD CONDITIONALS
 //=================================================================
 function KEYWORD() {
-    if ($matchedWord === "flick") {
-      searchOmdb();
-    }//END OF FILM CONDITIONS
+    if ($matchedWord === "flick") {searchOmdb();}
 
-    if ($matchedWord === "ask") {
-      searchQuestion();
-    }//END OF SEARCH ANSWER
+    if ($matchedWord === "ask") {searchQuestion();}
 
-    if ($matchedWord === "def") {
-      searchDictionary();
-    }
+    if ($matchedWord === "def") {searchDictionary();}
 
-    if ($matchedWord === "loc") {
-      showMap();
-    }
+    if ($matchedWord === "loc") {showMap();}
 
-    if ($matchedWord === "yoda") {
-      yodaReply();
-    }
+    if ($matchedWord === "yoda") {yodaReply();}
 
-    if ($matchedWord === "lyric") {
-      searchLyrics();
-    }
+    if ($matchedWord === "lyric") {searchLyrics();}
 
 }//END OF KEYWORD FUNCTION
 //=================================================================
@@ -159,32 +150,50 @@ function KEYWORD() {
 
 //SYMBOL CONDITIONALS
 //=================================================================
-function symbol() {
-  console.log("IS IT HERE?");
-    if ($matchedWord === "answer") {
-      if ($searchWord4 !== undefined) {
-        console.log("FOURTH WORD" + " " + $searchWord4);
-        var filmInput4 = $searchWord1 + " " + $searchWord2 + " " + $searchWord3 + " " + $searchWord4;
-        searchQuestion(filmInput4);
-        console.log(filmInput4 );
-      } else if ($searchWord3 !== undefined) {
-        console.log("THIRD WORD" + " " + $searchWord3);
-        var filmInput3 = $searchWord1 + " " + $searchWord2 + " " + $searchWord3;
-        searchQuestion(filmInput3);
-      } else if ($searchWord2 !== undefined) {
-        console.log("SECOND WORD" + " " + $searchWord2);
-        var filmInput2 = $searchWord1 + " " + $searchWord2;
-        searchQuestion(filmInput2);
-      } else {
-        console.log("do function with" + " " + $searchWord1);
-        var filmInput = $searchWord1;
-        searchQuestion(filmInput);
-      }
-    }
-    
+// function symbol() {
+//   console.log("IS IT HERE?");
+//     if ($matchedWord === "answer") {
+//       if ($searchWord4 !== undefined) {
+//         console.log("FOURTH WORD" + " " + $searchWord4);
+//         var filmInput4 = $searchWord1 + " " + $searchWord2 + " " + $searchWord3 + " " + $searchWord4;
+//         searchQuestion(filmInput4);
+//         console.log(filmInput4 );
+//       } else if ($searchWord3 !== undefined) {
+//         console.log("THIRD WORD" + " " + $searchWord3);
+//         var filmInput3 = $searchWord1 + " " + $searchWord2 + " " + $searchWord3;
+//         searchQuestion(filmInput3);
+//       } else if ($searchWord2 !== undefined) {
+//         console.log("SECOND WORD" + " " + $searchWord2);
+//         var filmInput2 = $searchWord1 + " " + $searchWord2;
+//         searchQuestion(filmInput2);
+//       } else {
+//         console.log("do function with" + " " + $searchWord1);
+//         var filmInput = $searchWord1;
+//         searchQuestion(filmInput);
+//       }
+//     }
+// }
+//Pro_sentences CONDITIONALS
+//=================================================================
+function ProSentences () {
+  if ($matchedWord === "yup") {affirm();}
 
+  if ($matchedWord === "yes") {affirm();}
+
+  if ($matchedWord === "yup") {affirm();}
+
+  if ($matchedWord === "yeah") {affirm();}
+
+  if ($matchedWord === "affirmative") {affirm();}
+
+  if ($matchedWord === "no") {decline();}
+
+  if ($matchedWord === "negative") {decline();}
+
+  if ($matchedWord === "nope") {decline();}
+
+  if ($matchedWord === "mayb") {maybe();}
 }
-
 
 
 //=================================================================
@@ -197,12 +206,18 @@ function noCompute() {
 }
 function greeting() {
   num = Math.random();
-  if (num > 0.5) {
+  if (0.25 > num > 0) {
     $("#reply").append($('<li>').text('Hello. How are you?'));
-  } else if (num < 0.5) {
-    $("#reply").append($('<li>').text('WASSUPPP?'));
+  } else if (0.5 > num > 0.25) {
+    $("#reply").append($('<li>').text('WASSUPP?'));
+  } else if (0.75 > num > 0.5 ) {
+    $("#reply").append($('<li>').text('Whats good?'));
+  } else if (1 > num > 0.75) {
+    $("#reply").append($('<li>').text('Hello ' + localUsername +'. How is your day going?'));
   }
     $("#command").val("");
+  
+  
 }
 function identify() {
     $("#reply").append($('<li>').text('I am J.S.A.I.N, the JavaScript Artificial Intelligence Network'));
@@ -331,6 +346,43 @@ function whyReply () {
   }
   $("#command").val("");
 }
+
+function affirm () {
+  num = Math.random();
+  if (0.25 > num > 0) {
+    $("#reply").append($('<li>').text('I am glad that you agree ' + localUsername + '.'));
+  } else if (0.5 > num > 0.25) {
+    $("#reply").append($('<li>').text('Well then..'));
+  } else if (0.75 > num > 0.5) {
+    $("#reply").append($('<li>').text('I thought so too.'));
+  } else if (1 > num > 0.75) {
+    $("#reply").append($('<li>').text('Agreed.'));
+  }
+  $("#command").val("");
+}
+
+function decline () {
+  num = Math.random();
+  if (0.25 > num > 0) {
+    $("#reply").append($('<li>').text('I am sorry you disagree' + localUsername + '.'));
+  } else if (0.5 > num > 0.25) {
+    $("#reply").append($('<li>').text('Well then..You should ask me a question.'));
+  } else if (0.75 > num > 0.5) {
+    $("#reply").append($('<li>').text('You are very disagreeable.'));
+  } else if (1 > num > 0.75) {
+    $("#reply").append($('<li>').text('Agree to disagree.'));
+  }
+  $("#command").val("");
+}
+
+function maybe () {
+  if (0.5 > num > 0) {
+    $("#reply").append($('<li>').text('Make up your mind...'));
+  } else if (1 > num > 0.5) {
+    $("#reply").append($('<li>').text('Maybe what?'));
+  }
+  $("#command").val("");
+}
 //=================================================================
 
 
@@ -346,15 +398,9 @@ function searchOmdb(input) {
         if (data.Error) {
           $("#reply").append($('<li>').text('I do not know that one!'));
           $("#command").val("");
-          // $results.html("No results found.");
         } else {
           $("#reply").append($('<li>').text(data.Title + " , " + data.Plot));
           $("#command").val("");
-          // data.Search.forEach(function (movie) {
-          //   console.log(movie);
-          //   $("#reply").append($('<li>').text(movie.Title));
-          //   $("#command").val("");
-          // });
         }
   });
 }
@@ -366,16 +412,9 @@ function searchQuestion() {
     console.log(data);
     console.log(data.body.output[0].actions.say);
     var reply = data.body.output[0].actions.say.text;
-    // for(var key in reply){
-    //   ANSWER = reply[key];
-    //   console.log(ANSWER);
-    // }
       
       $("#reply").append($('<li>').text(reply));
       $("#command").val("");
-    
-    // ANSWER = $value;
-    // console.log(ANSWER);
   });
 }
 
@@ -403,28 +442,22 @@ function searchDictionary() {
 }
 
 
-// function searchLyrics() {
-//   console.log($mapSearchFormat.split(" "));
-//   var searchArr = $("#command").val().split(" ").slice(1);
-//   var artistSong = {artistSong: searchArr};
-//   $.get( '/lyrics', artistSong, function (data) {
-//     console.log(data);
-//     console.log(typeof(data.body), data.body);
-//     $("#reply").append($('<li>').text(data.body));
-//   });
+function searchLyrics() {
+  console.log($mapSearchFormat.split(" "));
+  var searchArr = $("#command").val().split(" ").slice(1);
+  var artistSong = {artistSong: searchArr};
+  $.get( '/lyrics', artistSong, function (data) {
+    console.log(data);
+    console.log(typeof(data.body), data.body);
+    $("#reply").append($('<li>').text(data.body));
+  });
 
 //USE SPLIT AND SPLICE TO GET THE VALUE YOU WANT
 
-// }
+}
 //GOOGLE TEXT TO SPEECH HACK
 //=================================================================
 // url = "http://translate.google.com/translate_tts?tl=en&q=speak%22";
-
-
-
-
-
-
 
 
 
@@ -552,34 +585,34 @@ function xmlParser (xml) {
 
 //DISPLAYS A RANDOM QUESTION AT A "SET INTERVAL"
 //=================================================================
-// setInterval(function showQuest() {
-// $(document).ready(function () {
-// $.ajax({
-//     type: "GET",
-//     url: "popQuestions.xml",
-//     dataType: "xml",
-//     success: xmlParser
-//    });
-// });
-// function xmlParser (xml) {
-//   console.log(xml);
-//   $(xml).find("suggestionset").each(function () {
-//     var TEXT = $(this).find("text");
-//     console.log($(this).find("text").first());
-//     console.log(TEXT);
-//     var decimal = Math.random() * (962 - 1) + 1;
-//     var number =  Math.round(decimal);
-//     console.log(number);
-//     console.log(TEXT[0]);
-//     console.log(typeof(TEXT[number].innerHTML), TEXT[number].innerHTML);
-//     var temp = TEXT[number].innerHTML;
-//     console.log(temp);
-//     // $("#reply").append($('<li>').text(TEXT[number].innerHTML));
-//     $("#randQuest").append(TEXT[number].innerHTML).hide().fadeIn(700); 
-//   });
-// }
-// $("#randQuest").text(" ");
-// }, 5000);
+setInterval(function showQuest() {
+$(document).ready(function () {
+$.ajax({
+    type: "GET",
+    url: "popQuestions.xml",
+    dataType: "xml",
+    success: xmlParser
+   });
+});
+function xmlParser (xml) {
+  console.log(xml);
+  $(xml).find("suggestionset").each(function () {
+    var TEXT = $(this).find("text");
+    console.log($(this).find("text").first());
+    console.log(TEXT);
+    var decimal = Math.random() * (962 - 1) + 1;
+    var number =  Math.round(decimal);
+    console.log(number);
+    console.log(TEXT[0]);
+    console.log(typeof(TEXT[number].innerHTML), TEXT[number].innerHTML);
+    var temp = TEXT[number].innerHTML;
+    console.log(temp);
+    // $("#reply").append($('<li>').text(TEXT[number].innerHTML));
+    $("#randQuest").append(TEXT[number].innerHTML).hide().fadeIn(700); 
+  });
+}
+$("#randQuest").text(" ");
+}, 5000);
 //=================================================================
 
 
@@ -648,51 +681,6 @@ localUsername = localStorage.getItem("name");
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//THIS IS SOME LOGIC I DIDNT END UP NEEDING AFTER ALL
-// if ($searchWord4 !== undefined) {
-      //   console.log("FOURTH WORD" + " " + $searchWord4);
-      //   var filmInput4 = $searchWord1 + " " + $searchWord2 + " " + $searchWord3 + " " + $searchWord4;
-      //   searchOmdb(filmInput4);
-      //   console.log(filmInput4 );
-      // } else if ($searchWord3 !== undefined) {
-      //   console.log("THIRD WORD" + " " + $searchWord3);
-      //   var filmInput3 = $searchWord1 + " " + $searchWord2 + " " + $searchWord3;
-      //   searchOmdb(filmInput3);
-      // } else if ($searchWord2 !== undefined) {
-      //   console.log("SECOND WORD" + " " + $searchWord2);
-      //   var filmInput2 = $searchWord1 + " " + $searchWord2;
-      //   searchOmdb(filmInput2);
-      // } else {
-      //   console.log("do function with" + " " + $searchWord1);
-      //   var filmInput = $searchWord1;
-      //   searchOmdb(filmInput);
-      // }
 
 
 
