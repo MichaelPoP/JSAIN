@@ -41,6 +41,21 @@ app.get("/go", function(req, res){
 });
 
 
+// app.get("/input", function(req, res){
+//   var allINPUTS = [];
+//   var allINPUTSstring = allINPUTS.join(" ");
+//   var INPUTstring = req.query.inputs;
+//   console.log(INPUTstring);
+//   var INPUTarray = INPUTstring.split(" ");
+//   console.log("inputarray " + INPUTarray);
+//   // for(var v ;v < INPUTarray.length; v++) {
+//     allINPUTS.push(allINPUTSstring);
+  
+//   console.log( "THIS IS " + allINPUTSstring);
+//   res.send(allINPUTS);
+// });
+
+
 app.get("/search", function(req, res){
   var question = req.query.search;
   unirest.get("https://siris.p.mashape.com/json?clientFeatures=all&input=" + question + "&locale=en&timeZone=%2B120")

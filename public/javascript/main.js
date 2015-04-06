@@ -14,8 +14,19 @@ howRUGood = ['awesom', 'super', 'great', 'perfect', 'prime', 'ideal', 'magnific'
 arrayList = [keywords, pro_sentences, greetings, goodbyes, insults, swearWords, howRUBad, howRUGood];
 //=================================================================
 var INPUT;
-
 $("#commForm").submit(function(e){
+
+//   var inputs = [];
+// var checker = $("#command").val();
+// while (checker) {
+//   inputs.push(checker);
+// }
+// console.log(inputs);
+//     var userINPUTS = { inputs: ($("#command").val()) };
+//   $.get( '/input', userINPUTS, function(data) {
+//     console.log(data);
+//   });
+
   e.preventDefault();
   $("#reply").append($('<li>').text(localUsername + " : " + $("#command").val()));
   $("#command").text(" ");
@@ -512,7 +523,7 @@ eyeFlicker[0].addEventListener("mouseout", endflicker);
 //=================================================================
 function showMap () {
   $("#command").val("");
-  var url = encodeURI("https://maps.googleapis.com/maps/api/geocode/json?address=" + $mapSearchFormat + "&key=AIzaSyDE6F79FbnrSc9hZlurECTyBJoEyHCj-Nc");
+  var url = encodeURI("https://maps.googleapis.com/maps/api/geocode/json?address=" + $mapSearchFormat + "&key=AIzaSyBEvrY1kfZJhQv5ttchXI2P4GXwQZu7Mtg");
   $.getJSON(url, function(data) {
         // console.log(data);
       $newLat = data.results[0].geometry.location.lat; // json result stored in variable
