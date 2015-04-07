@@ -523,7 +523,7 @@ eyeFlicker[0].addEventListener("mouseout", endflicker);
 //=================================================================
 function showMap () {
   $("#command").val("");
-  var url = encodeURI("https://maps.googleapis.com/maps/api/geocode/json?address=" + $mapSearchFormat + "&key=AIzaSyBEvrY1kfZJhQv5ttchXI2P4GXwQZu7Mtg");
+  var url = encodeURI("https://maps.googleapis.com/maps/api/geocode/json?address=" + $mapSearchFormat + "&key=AIzaSyCJiQa74Sxfc5ROEkBn1z6qFpRupjQuTow");
   $.getJSON(url, function(data) {
         // console.log(data);
       $newLat = data.results[0].geometry.location.lat; // json result stored in variable
