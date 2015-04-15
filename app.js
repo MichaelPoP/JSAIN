@@ -40,6 +40,10 @@ app.get("/go", function(req, res){
   res.send(tokenstem);
 });
 
+app.get("/", function(req, res){
+  
+});
+
 
 // app.get("/input", function(req, res){
 //   var allINPUTS = [];

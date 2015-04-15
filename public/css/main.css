@@ -1,6 +1,8 @@
 #BACK {background-color: black;}
 #title {font-family: 'Geostar Fill', cursive;}
-
+::-webkit-scrollbar { 
+    display: none; 
+}
 
 #questBox {margin-bottom: 10px;height: 20px;}
 #randQuest { text-shadow: 0 0 5px #FFF, 0 0 5px #FFF;}
@@ -34,6 +36,23 @@ li {color:black;}
   top: -30px;
   z-index: -100;
   box-shadow: -7px -7px 13px #ED2120, 7px 7px 13px #ED2120, 7px -7px 13px #ED2120, -7px 7px 13px #ED2120;
+}
+
+#command {
+  color:white;
+   border: 5px solid #5F5796; 
+    -webkit-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    -moz-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    padding: 15px;
+    background: rgba(96,90,110,0.8);
+    margin: 0 0 10px 0;
 }
 /*#glow:hover {
   visibility: visible;

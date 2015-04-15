@@ -32,7 +32,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Is This The Place?</h4>
+        <h4 class="modal-title" id="myModalLabel"></h4>
       </div>
       <div class="modal-body">
          <div id="map-canvas" style="width: 500px; height: 400px"></div>  
@@ -44,6 +44,8 @@
   </div>
 </div>
 <!-- END OF GOOGLE MAP MODAL -->
+
+
 <nav id="navstyle" class="navbar navbar-default navbar-fixed-top mynav">
     <div class="container">
       <ul>
@@ -71,7 +73,9 @@
 </div>
 
 <div id="replyBox" class="overflow well well-lg">
-  <ul id="reply"></ul>
+  <div id="replyH">
+    <ul id="reply"></ul>
+  </div>
 </div>
 
 <form id="commForm" action="">
@@ -91,6 +95,16 @@
 <button id="mapButton", type="button", data-toggle="modal" data-target="#mapModal"></button>
 
 </center>
+<script type="text/javascript">
+  // $("#commForm").submit( function(e) {
+  //  e.preventDefault();
+ 
+ 
+  //   $("#replyBox").scrollBottom = $("#replyH").scrollHeight;
+
+  // });
+</script>
+
 
 
 <!-- <script type="text/javascript" src="bundle.js"></script> -->
