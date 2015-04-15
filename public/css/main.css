@@ -53,6 +53,7 @@ li {color:black;}
     padding: 15px;
     background: rgba(96,90,110,0.8);
     margin: 0 0 10px 0;
+    font-size: 20px;
 }
 /*#glow:hover {
   visibility: visible;
